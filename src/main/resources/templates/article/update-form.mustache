@@ -19,8 +19,7 @@
                     <textarea name="content" cols="" rows="5" class="form-control">{{article.content}}</textarea>
                 </div>
 
-
-                <button class="btn btn-primary form-control">글수정하기완료</button>
+                <button class="btn btn-primary form-control mb-3">글수정하기완료</button>
             </form>
             <!--게시글 사진 업로드 섹션-->
             <div class="d-flex mb-3 " >
@@ -39,9 +38,9 @@
                     {{/article.pictureImagePath}}
                 </div>
                 <div class="d-flex align-content-center flex-wrap">
-                    <!--                    파일 업로드 폼 -->
+                    <!--파일 업로드 폼 -->
                     <form action="/article/{{article.id}}/upload-photo" method="post"
-                          enctype="multipart/form-data" class="mb-3">
+                          enctype="multipart/form-data" class="mb-3 d-flex">
                         <div class="me-2">
                             <input type="file" class="form-control form-control-sm" alt="사진업로드"
                                    name="photoImage" accept="image/*" required>
@@ -52,7 +51,7 @@
                             </button>
                         </div>
                     </form>
-                    <!--                     이미지 삭제 버튼-->
+                    <!--이미지 삭제 버튼-->
                     {{#article.pictureImagePath}}
                         <form action="/article/{{article.id}}/delete-photo" method="post">
                             <button type="submit" class="btn btn-danger btn-sm me-2"
