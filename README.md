@@ -61,15 +61,15 @@ self_blog_lyr/
 │   │       ├── static/                 # 정적 리소스 (CSS, JS, Images)
 │   │       ├── templates/              # 뷰 템플릿 (Mustache)
 │   │       │   ├── layout/             #    - 공통 레이아웃 (header, footer)
-│   │   │       │   ├── user/               #    - 사용자 관련 뷰
-│   │   │       │   ├── board/              #    - 게시판 관련 뷰
-│   │   │       │   ├── article/            #    - 메모장 관련 뷰
-│   │   │       │   └── err/                #    - 에러 페이지
-│   │   │       ├── db/
-│   │   │       │   └── data.sql            # 초기 데이터 스크립트
-│   │   │       ├── application.yml         # Spring Boot 공통 설정
-│   │   │       ├── application-dev.yml     # 개발 환경 설정
-│   │   │       └── application-prod.yml    # 운영 환경 설정
+│   │       │   ├── user/               #    - 사용자 관련 뷰
+│   │       │   ├── board/              #    - 게시판 관련 뷰
+│   │       │   ├── article/            #    - 메모장 관련 뷰
+│   │       │   └── err/                #    - 에러 페이지
+│   │       ├── db/
+│   │       │   └── data.sql            # 초기 데이터 스크립트
+│   │       ├── application.yml         # Spring Boot 공통 설정
+│   │       ├── application-dev.yml     # 개발 환경 설정
+│   │       └── application-prod.yml    # 운영 환경 설정
 │   └── test/                           # 테스트 코드
 │       └── java/
 │           └── com/tenco/blog/
