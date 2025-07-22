@@ -73,4 +73,5 @@ self_blog_lyr/
 │   └── test/                           # 테스트 코드
 │       └── java/
 │           └── com/tenco/blog/
-└── README.md                           # 프로젝트 소개 파일```
+└── README.md                           # 프로젝트 소개 파일
+```

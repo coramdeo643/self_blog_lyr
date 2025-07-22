@@ -33,6 +33,8 @@ public class Article {
 	@JoinColumn(name = "user_id") // 외래키 컬러명 명시
 	private User user;
 
+	private String pictureImagePath;
+
 	@CreationTimestamp
 	private Timestamp createdAt;
 
