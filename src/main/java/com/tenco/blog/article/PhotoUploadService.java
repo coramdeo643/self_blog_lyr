@@ -20,7 +20,7 @@ import java.util.UUID;
  * - 주의 : 데이터베이스 업데이트는 UserService 에서 처리할 예정
  */
 @Service
-public class PictureUploadService {
+public class PhotoUploadService {
 
 	@Value("${file.upload-dir}")
 	private String uploadDir;
@@ -28,7 +28,7 @@ public class PictureUploadService {
 	/**
 	 * 프로필 이미지 파일을 서버에 업로드 하는 메서드
 	 */
-	public String uploadProfileImage(MultipartFile multipartFile) throws IOException {
+	public String uploadPhotoImage(MultipartFile multipartFile) throws IOException {
 
 		// 1. 단계 : 업로드할 디렉토리(폴더)가 존재하지 않으면 생성
 		createUploadDirectory();
@@ -54,7 +54,7 @@ public class PictureUploadService {
 
 		// 7단계 : 실제 바이트 단위로 받은 데이터를 서버 컴퓨터에
 		// new File() 경로와 실제 생성된 파일명을 문자열 총 반환
-		return "/uploads/picture/" + uniqueFileName;
+		return "/uploads/profiles/" + uniqueFileName;
 	}
 
 	// 고유한 파일명 생성
@@ -93,7 +93,7 @@ public class PictureUploadService {
 	}
 
 	// profile Image 파일 삭제 메서드
-	public void deleteProfileImage(String imagePath) {
+	public void deletePhotoImage(String imagePath) {
 		if (imagePath != null && imagePath.isEmpty() == false) {
 			try {
 				// uploads/profiles/202592480218490.png
