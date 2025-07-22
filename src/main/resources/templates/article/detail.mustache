@@ -1,0 +1,85 @@
+{{> layout/header}}
+
+<div class="container p-5">
+
+    <!-- 수정삭제버튼 -->
+    {{#article.articleOwner}}
+        <!--  게시글 주인만 표시 됨 -->
+        <div class="d-flex justify-content-end">
+            <!-- 페이지 이동 요청 -->
+            <a href="/article/{{article.id}}/update-form" class="btn btn-light me-1"><i class="fas fa-edit"></i></a>
+            <form action="/article/{{article.id}}/delete" method="post">
+                <button class="btn btn-light"><i class="fas fa-trash-alt"></i></button>
+            </form>
+        </div>
+    {{/article.articleOwner}}
+
+    <div class="d-flex justify-content-end">
+        <b>작성자</b> : {{article.user.username}}
+    </div>
+
+    <!-- 게시글내용 -->
+    <div>
+        <h2><b>{{article.title}}</b></h2>
+        <hr />
+        <div class="m-4 p-2">
+            {{article.content}}
+        </div>
+    </div>
+
+    <!-- 댓글 영역  -->
+    <div class="card mt-3">
+        <!-- 로그인 댓글등록 보임 -->
+        {{#sessionUser}}
+            <div class="card-body">
+                <form action="/comment/save" method="post">
+                    <input type="hidden" name="articleId" value="{{article.id}}">
+                    <textarea class="form-control" rows="2" name="comment"></textarea>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-sm btn-light mt-1"><i class="fas fa-edit"></i> 댓글등록</button>
+                    </div>
+                </form>
+            </div>
+        {{/sessionUser}}
+        <!-- 비 로그인 로그인 안내  -->
+        {{^sessionUser}}
+            <div class="card-body text-center">
+                <p class="text-muted mb-0">
+                    댓글을 작성하려면 <a href="/login-form">로그인</a>이 필요합니다.
+                </p>
+            </div>
+        {{/sessionUser}}
+
+        <!-- 댓글목록 -->
+        <div class="card-footer">
+            <b><i class="fas fa-comment-dots"></i></b>
+        </div>
+        <div class="list-group">
+            {{#article.comments}}
+                <!-- 댓글아이템 -->
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex">
+                        <div class="px-1 me-1 bg-light text-white rounded">{{user.username}}</div>
+                        <div>{{comment}}</div>
+                    </div>
+
+                    {{#commentOwner}}
+                        <form action="/comment/{{id}}/delete" method="post">
+                            <input type="hidden" name="articleId" value="{{article.id}}">
+                            <button class="btn" onclick="return confirm('댓글을 삭제하겠습니까?')" >🗑</button>
+                        </form>
+                    {{/commentOwner}}
+
+                </div>
+            {{/article.comments}}
+
+            {{^article.comments}}
+                <div class="card-body text-center">
+                    <p class="text-muted mb-0" >아직 댓글이 없습니다</p>
+                </div>
+            {{/article.comments}}
+        </div>
+    </div>
+</div>
+
+{{> layout/footer}}
